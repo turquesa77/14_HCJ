@@ -1,0 +1,923 @@
+/* Scss Document */
+
+@charset "UTF-8";
+/*! ============================================
+※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+このCSSファイルはSassから生成されていますので、
+編集しないようご注意ください。
+※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+============================================= */
+
+
+// --------------------------------------------
+// Style Guide
+// 基本的な考えは、OOCSSベース。
+// 
+// #命名規則
+// MindBEMdingをベースに以下のルールで記載。
+// block__element--modifier
+// ※Blockが複数単語になる場合は、「blockName」のようにキャメルケースにする。
+// ※分かりやすいクラス名は略名にする。
+// ※Block, Element, Modifierは、まとめて同じ箇所に記述する。
+// --------------------------------------------
+
+
+// ============================================
+// import css
+// ============================================
+
+//reset css
+@import "_base.scss";
+// "slick" slide show
+@import '_slick.scss';
+@import '_slick-theme.scss';
+// settings
+@import '_settings.scss';
+// module
+@import '_module.scss';
+// component
+@import '_g_header_fixed.scss'; // JMA menu
+@import '_c_headinfo.scss'; // headInfo in header
+@import '_c_megamenu.scss'; // megamenu in header
+@import '_c_keyvisual.scss'; // keyVisual
+@import '_c_information.scss'; // What's New
+@import '_c_contact.scss'; // contact in footer
+@import '_c_footer.scss'; // nav in footer
+@import '_c_timetable.scss'; // timeTable
+@import '_c_fee.scss'; // booth & fee
+@import '_c_visit.scss'; // visit
+@import '_c_qanda.scss'; // Q&A
+@import '_c_download.scss'; // logo,banner download
+
+
+// --------------------------------------------
+// Project
+// --------------------------------------------
+
+// frame ------------------------------
+
+// 背景：無し
+.frame-r {
+	@include space;
+}
+// 背景：白
+.frame-wh {
+	@extend .frame-r;
+	background-color: white;
+}
+// 背景：パターン
+.frame-pattern {
+	@extend .frame-r;
+	background: repeating-linear-gradient(45deg, #444, #444 10px, #888 0, #888 20px);
+}
+// for l-inner
+.frame-inner {
+	max-width: $width-main;
+	@include media(sp) {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+// JMA nav ------------------------------
+#global_link {
+	padding: 5px 10px;
+	@include media(sp) {
+		display: none;
+	}
+}
+
+// headAppend ------------------------------
+.headAppend {
+	$color-blue: #0093cf;
+	
+	background-color: $color-main;
+	&--inner {
+		display: flex;
+		flex-flow: row;
+		justify-content: flex-end;
+		padding: 5px 0;
+		@include media(sp) {
+			flex-flow: column;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		&:after {
+			content: none;
+		}
+	}
+	&__social {
+		display: flex;
+		flex-flow: row;
+		margin-right: 60px;
+		@include media(sp) {
+			margin-right: 10px;
+			justify-content: flex-end;
+		}
+		li {
+			+ li {
+				margin-left: 20px;
+			}
+			&:nth-child(1) {
+				padding-top: 1px;
+				a {
+					color: $color-blue;
+					@include font-size(13);
+					border: 1px solid $color-blue;
+					background-color: white;
+					padding: 0 10px;
+					transition: all 0.3s ease;
+					&:hover {
+						background-color: $color-blue;
+						color: white;
+					}
+				}
+				@include media(sp) {
+					display: none;
+				}
+			}
+			&:nth-child(2) {
+				padding-top: 5px;
+			}
+			&:nth-child(3) {
+				padding-top: 5px;
+			}
+		}
+	}
+	&__lang {
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		@include media(sp) {
+			justify-content: flex-end;
+			margin-right: 10px;
+		}
+		li {
+			+ li {
+				margin-left: 15px;
+			}
+			a {
+				display: block;
+				width: 100%;
+				color: $color-main;
+				background-color: white;
+				padding: 0 10px;
+				border-radius: 15px;
+				border: 1px solid transparent;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: $color-main;
+					color: white;
+					border: 1px solid white;
+				}
+			}
+		}
+	}
+}
+
+// nav ------------------------------
+nav {
+	width: 100%;
+	background-color: $color-main;
+	box-shadow: 0px 9px 3px -3px rgba(black, 0.1);
+	position: relative; // for box-shadow
+	z-index: 2; // for box-shadow
+	&.fixed {
+		position: fixed;
+		top: 0;
+	}
+}
+
+// top-visitNav ------------------------------
+.top-visitNav {
+	background-color: white;
+	padding: 20px 10px;
+	&--inner {
+		min-width: 300px;
+	}
+	&__unit {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		text-align: center;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		li {
+			width: 30%;
+			border: 1px solid $color-type01;
+			padding: 15px;
+			@include media(sp) {
+				width: 100%;
+			}
+			+ li {
+				@include media(sp) {
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+	&__title {
+		color: $color-type01;
+		@include font-size(28);
+		@include font-weight(l);
+	}
+	&__fig1 img {
+		max-width: 24px;
+	}
+	&__fig2 img {
+		max-width: 43px;
+	}
+	&__fig3 img {
+		max-width: 35px;
+	}
+	&__desc {
+		@include font-size(14);
+		@include font-weight(m);
+	}
+	&__btn {
+		max-width: 170px;
+		margin: 0 auto;
+		a {
+			display: block;
+			width: 100%;
+			background-color: $color-type01;
+			color: white;
+			padding: 10px;
+			@include hoverOpc;
+		}
+	}
+}
+
+// aspect ------------------------------
+.aspect {
+	&__unit {
+		max-width: 600px;
+		margin: 0 auto;
+		&--inner {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 56.25%;
+			overflow: hidden;	
+		}
+		iframe {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+// notable ------------------------------
+.notable {
+	&--inner {
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__container {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+		}
+	}
+	&__box {
+		width: 30%;
+		border: 1px solid $color-main;
+		@include media(sp) {
+			width: 100%;
+			text-align: center;
+		}
+		&--other {
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		&--inner {
+			padding: 20px;
+		}
+	}
+	&__title {
+		text-align: center;
+		@include font-weight(l);
+	}
+	&__subtitle {
+		@include font-size(18);
+		color: $color-type02;
+	}
+	&__center {
+		text-align: center;
+	}
+	&__fs15 {
+		@include font-size(15);
+	}
+	&__fs14 {
+		@include font-size(14);
+	}
+	&__btn {
+		a {
+			display: block;
+			width: 100%;
+			color: $color-type02;
+			border: 1px solid $color-type02;
+			padding: 10px 30px;
+			text-align: center;
+			transition: all 0.3s ease;
+			&:hover {
+				background-color: $color-type02;
+				color: white;
+			}
+		}
+		&--s {
+			max-width: 300px;
+			margin: 0 auto;
+		}
+	}
+}
+
+// offer ------------------------------
+.offer {
+	&--inner {
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__container {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		li {
+			width: 30%;
+			text-align: center;
+			@include media(sp) {
+				width: 100%;
+				margin-bottom: 50px;
+			}
+		}
+	}
+	&__title {
+		@include font-size(22);
+	}
+	&__desc {
+		@include font-size(14);
+	}
+	&__btn {
+		max-width: 250px;
+		margin: 0 auto;
+		a {
+			display: block;
+			width: 100%;
+			color: $color-type02;
+			border: 1px solid $color-type02;
+			padding: 10px 30px;
+			text-align: center;
+			transition: all 0.3s ease;
+			&:hover {
+				background-color: $color-type02;
+				color: white;
+			}
+		}
+	}
+}
+
+// links ------------------------------
+.links {
+	@include space-btm;
+	&--area {
+		@include space;
+	}
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__title {
+		text-align: center;
+		background-color: $color-type02;
+	}
+	&__body {
+		background-color: white;
+		padding: 20px 20px 20px 50px;
+		overflow: hidden;
+		border: 1px solid $color-type02;
+		@include media(sp) {
+			padding: 20px;
+		}
+		li {
+			text-align: center;
+		}
+		a {
+			@include hoverOpc;
+		}
+	}
+	&__append {
+		text-align: right;
+		@include font-size(14);
+	}
+}
+
+
+
+
+// ↓ css見直し
+
+// prevPhoto ------------------------------
+.prevPhoto {
+	@include space;
+	&--inner {
+		max-width: 600px;
+	}
+}
+
+// fee ------------------------------
+.fee-pageNav--inner {
+	max-width: 500px;
+}
+
+// press ------------------------------
+.press {
+	&--inner {
+		max-width: 800px;
+	}
+	&__txt {
+		margin-bottom: 70px;
+	}
+}
+
+// release ------------------------------
+.release {
+	padding-bottom: 200px;
+	&--inner {
+		max-width: 800px;
+	}
+	&__define {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 50px 0;
+		dt {
+			clear: both;
+			float: left;
+			width: 8em;
+			@include media(sp) {
+				float: none;
+			}
+		}
+		dd {
+			padding-left: 8em;
+			margin-bottom: 20px;
+			@include media(sp) {
+				padding-left: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// qanda ------------------------------
+.qanda {
+	padding-bottom: 100px;
+	&--inner {
+		max-width: 800px;
+	}
+}
+
+// outline ------------------------------
+.outline {
+	&--02 {
+		background-color: darken($color-sub3, 3%);
+	}
+	&__center {
+		text-align: center;
+	}
+	&__sp__left {
+		@include media(sp) {
+			text-align: left;
+		}
+	}
+	&__mainTitle { // title2をアレンジ
+		@include font-size(26);
+		font-weight: 600;
+		&:after {
+			height: 5px;
+			background-color: $color-main;
+		}
+	}
+	&__title {
+		background: $color-main;
+		padding: 20px;
+		color: white;
+		@include font-size(20);
+		font-weight: normal;
+		border-radius: 0.5em;
+	}
+	&__title2 {
+		@include font-size(20);
+		font-weight: bold;
+		color: $color-main;
+	}
+	&__title3 {
+		font-weight: bold;
+		font-style: italic;
+	}
+	&__title4 {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	&__title4--s {
+		background-color: $color-type10;
+	}
+	&__title--800 {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	&__append {
+		@include font-size(14);
+	}
+	&__txtBlock {
+		display: inline-block;
+	}
+	&__box {
+		width: 100%;
+		max-width: 800px;
+		border: 1px solid $color-main;
+		padding: 20px;
+		margin: 0 auto;
+		&--center {
+			border: 1px solid $color-type10 !important;
+		}
+		&--containerS {
+			max-width: 500px;
+			margin: 0 auto;
+		}
+	}
+	&__tbl {
+		max-width: 400px;
+		width: 100%;
+		@include font-size(14);
+		margin: 0 auto;
+		border-collapse: collapse;
+		tr {
+			td {
+				padding: 5px;
+			}
+			&:nth-child(2n) {
+				td {
+					background-color: lighten($color-main, 53%);
+				}
+			}
+		}
+		&--frame {
+			max-width: 600px;
+			border: 5px solid lighten($color-main, 53%);
+			padding: 30px 10px;
+			margin: 0 auto;
+		}
+	}
+	&__tbl2 {
+		max-width: 800px;
+		width: 100%;
+		margin: 0 auto;
+		border-collapse: collapse;
+		background-color: white;
+		th, td {
+			padding: 10px;
+			border: 3px solid white;
+			@include media(sp) {
+				display: block;
+				width: 100%;
+				border: none;
+			}
+		}
+		th {
+			background-color: $color-main;
+			color: white;
+		}
+		td {
+			@include font-size(15);
+		}
+	}
+	&__list {
+		max-width: 600px;
+		margin: 0 auto;
+		li {
+			display: inline-block;
+			margin-right: 1em;
+			@include indent(1);
+			&:before {
+				content: "●";
+				color: $color-main;
+				margin-right: 3px;
+				line-height: 2;
+			}
+		}
+		&--wide {
+			max-width: 800px;
+		}
+	}
+	&__fig { // img 2枚
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		li {
+			max-width: 350px;
+			width: 100%;
+			@include media(sp) {
+				margin: 0 auto 10px;
+			}
+		}
+	}
+	&__fig2 { // img 1枚
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	&__fig3 { // img 1枚
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	&__fig4 {
+		@extend .outline__fig;
+		flex-flow: row wrap;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		li {
+			margin-bottom: 25px;
+		}
+	}
+	&__figLogo { // logo
+		max-width: 400px;
+		margin: 0 auto 20px;
+	}
+	&__btn { // ボタン複数個
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		li {
+			@include media(sp) {
+				margin-bottom: 15px;
+			}
+			a {
+				@include font-size(16);
+				padding: 10px 30px;
+			}
+		}
+	}
+	&__btn2 { // ボタン1個
+		text-align: center;
+		a {
+			display: inline;
+			@include font-size(18);
+			padding: 15px 30px;
+		}
+	}
+	&__exhibitList {
+		max-width: 800px;
+		margin: 0 auto;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		@include media(sp) {
+			justify-content: center;
+		}
+		li {
+			width: 150px;
+			margin-right: 20px;
+			margin-bottom: 15px;
+			@include media(sp) {
+				margin: 0 10px 15px;
+			}
+			a {
+				@include hoverOpc;
+			}
+		}
+	}
+}
+
+.arrow-img {
+	text-align: center;
+	img {
+		max-width: 130px;
+	}
+}
+
+// 出展のご案内ボタン吹き出し
+#exhibitGuide {
+	a {
+		color: white;
+		@include hoverOpc;
+	}
+}
+
+// option ------------------------------
+.option {
+	&__container {
+		max-width: 800px;
+		margin: 0 auto 80px;
+		@include media(sp) {
+			max-width: 90%;
+		}
+		&--end {
+			margin: 0 auto 30px;
+		}
+	}
+	&__define {
+		dt, dd {
+			padding: 5px 10px;
+			margin-bottom: 8px;
+		}
+		dt {
+			clear: left;
+			float: left;
+			width: 8em;
+			background-color: $color-sub1;
+			color: white;
+			text-align: center;
+			@include media(sp) {
+				float: none;
+				width: 100%;
+			}
+		}
+		dd {
+			padding-left: 9em;
+			@include media(sp) {
+				padding-left: 0;
+			}
+		}
+		&__white {
+			background-color: white !important;
+			color: $color-sub1 !important;
+			border: 1px solid $color-sub1;
+		}
+	}
+	&__limited {
+		background-color: white;
+		color: $color-type01;
+		@include font-size(17);
+		font-weight: bold;
+		border-radius: 5px;
+		padding: 0 10px;
+		margin-left: 20px;
+	}
+	&__strong {
+		color: $color-type02;
+		font-weight: bold;
+		@include font-size(18);
+	}
+	&__attention {
+		@include font-size(14);
+		li {
+			@include indent(1);
+		}
+	}
+	&__fig1 {
+		text-align: center;
+	}
+	&__fig2 {
+		max-width: 450px;
+	}
+	&__tbl {
+		max-width: 550px;
+		margin: 0;
+		tr {
+			th, td {
+				padding: 3px;
+				text-align: center;
+				@include font-size(14);
+				@include media(sp) {
+					display: table-cell;
+					width: auto;
+				}
+			}
+			&:nth-child(2n+3) {
+				th, td {
+					background-color: lighten($color-main, 30%);
+				}
+			}
+		}
+	}
+}
+
+// about ------------------------------
+.about {
+	&--inner {
+		max-width: $width-main;
+	}
+	&__btn {
+		max-width: 400px;
+		margin: 0 auto 30px;
+	}
+}
+
+// report 2018 ------------------------------
+.attendance {
+	$color-report: #278e42;
+	
+	background-color: white;
+	@include space;
+	&--inner {
+		max-width: 850px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	&__title {
+		span {
+			@include font-size(14);
+		}
+	}
+	&__logo {
+		display: flex;
+		justify-content: space-between;
+		&__01 { width: 400px; }
+		&__02 { width: 380px; }
+	}
+	&__kome {
+		font-size: 12px;
+	}
+	&__tbl {
+		&--container {
+			overflow: auto;
+		}
+		width: 100%;
+		margin: 20px auto 0;
+		border-collapse: collapse;
+		text-align: center;
+		tr {
+			&:nth-child(2n+1) {
+				background-color: lighten($color-report, 60%);
+			}
+		}
+		th, td {
+			padding: 15px;
+		}
+		th {
+			background-color: $color-report;
+			color: white;
+			white-space: nowrap;
+		}
+		&__date {
+			white-space: nowrap;
+		}
+		&__sum {
+			font-weight: bold;
+		}
+	}
+	&__append {
+		text-align: left;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		@include font-size(14);
+		@include indent(3);
+		br {
+			@include media(sp) {
+				display: none;
+			}
+		}
+	}
+	&__desc {
+		color: $color-report;
+		font-weight: bold;
+		text-align: center;
+		@include font-size(18);
+		margin-top: 40px;
+	}
+}
+
+.visitor-photo {
+	background-color: white;
+	@include space-btm;
+	&--inner {
+		max-width: 1000px;
+	}
+	&__unit {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+		li {
+			width: 300px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+
+

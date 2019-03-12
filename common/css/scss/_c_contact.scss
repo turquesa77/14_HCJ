@@ -1,0 +1,67 @@
+/* Scss Document */
+
+// contact ------------------------------
+.contact {
+	@mixin btnStyle {
+		display: block;
+		width: 100%;
+		color: white;
+		background: $color-type01;
+		padding: 20px 0;
+		text-align: center;
+		@include font-size(30);
+		border-radius: 10px;
+		@include hoverOpc;
+		@include media(sp) {
+			@include font-size(21);
+		}
+	}
+	@mixin btnStyle-s {
+		@include btnStyle;
+		@include font-size(26);
+		padding: 15px;
+		border-radius: 15px;
+	}
+
+	@include space;
+	background: url(#{$imgDir}contact_img.jpg) 25% 45% no-repeat #ccc;
+	&__center {
+		text-align: center;
+	}
+	&__desc {
+		@include font-weight(m);
+	}
+	&__name {
+		@include font-size(26);
+		color: $color-type02;
+	}
+	&__address {
+		@include font-size(14);
+	}
+	&__linkArea {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		max-width: 700px;
+		margin: 0 auto 30px;
+	}
+	&__phone {
+		@include font-size(18);
+		span a {
+			@include font-size(34);
+			@include font-weight(m);
+			color: $color-type02;
+		}
+	}
+	&__web {
+		a {
+			display: block;
+			width: 100%;
+			background-color: $color-type02;
+			color: white;
+			padding: 15px 25px;
+			@include font-size(18);
+			@include hoverOpc;
+		}
+	}
+}

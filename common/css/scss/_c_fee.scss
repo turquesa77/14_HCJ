@@ -1,0 +1,274 @@
+/* Scss Document */
+
+// booth ------------------------------
+.booth {
+	@include space;
+	background-color: white;
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__mainTitle {
+		margin-bottom: 50px;
+	}
+	&__head {
+		text-align: left;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	&__titleDesc {
+		@include font-size(14);
+	}
+	&__body {
+		background-color: white;
+		padding: 30px;
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+		border: 1px solid $color-main;
+		@include media(sp) {
+			flex-flow: column;
+			padding: 15px;
+		}
+		&--left {
+			@include media(sp) {
+				margin-bottom: 30px;
+			}
+		}
+		&--right {
+			text-align: center;
+			padding-left: 30px;
+			@include media(sp) {
+				padding-left: 0;
+			}
+		}
+	}
+	&__subTitle {
+		border-left: 5px solid $color-main;
+		padding-left: 5px;
+		margin-bottom: 20px;
+	}
+	&__list {
+		@include font-size(14);
+		line-height: 1.8;
+		li {
+			margin-bottom: 10px;
+			&:before {
+				content: "●";
+				color: $color-main;
+				margin-right: 5px;
+			}
+		}
+		&__title {
+			font-weight: bold;
+			color: $color-main;
+		}
+		&__red {
+			color: red;
+		}
+	}
+	&__append {
+		@include font-size(14);
+		margin-top: 30px;
+	}
+	&__fig {
+		max-width: 300px;
+		margin: 0 auto 20px;
+	}
+	&__example {
+		display: inline-block;
+		background-color: $color-main;
+		color: white;
+		padding: 5px 20px;
+		border-radius: 10px;
+	}
+	&__figTxt {
+		@include font-size(14);
+		text-align: left;
+		margin-top: 20px;
+	}
+}
+
+// fee ------------------------------
+@mixin fee-table($theme: $color-main) {
+	width: 100%;
+	border: 1px solid $theme;
+	background-color: white;
+	tr {
+		th, td {
+			border: 1px solid $theme;
+			@include font-size(18);
+		}
+		th {
+			background-color: $theme;
+			color: white;
+			font-weight: 500;
+			padding: 10px;
+			vertical-align: middle;
+		}
+		td {
+			text-align: center;
+			padding: 20px;
+		}
+	}
+	.fee-table__categ {
+		background-color: lighten($theme, 57%);
+	}
+}
+
+.fee {
+	$color-fee-pink: #D95B55;
+	$color-fee-orange: #F47632;
+	
+	@include space-btm;
+	background-color: white;
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__head {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 15px;
+	}
+	@mixin fee-title($theme: $color-main) {
+		@include font-size(18);
+		color: $theme;
+		border-left: 5px solid $theme;
+		font-weight: 500;
+		padding-left: 5px;
+		margin-right: 20px;
+	}
+	&__title {
+		@include fee-title();
+		&1 { @include fee-title($color-fee-pink); }
+		&2 { @include fee-title(#000000); }
+		&3 { @include fee-title($color-fee-orange); }
+		&4 {
+			@include fee-title();
+			margin-bottom: 15px;
+		}
+	}
+	&__deadline {
+		color: white;
+		background-color: red;
+		padding: 0 10px;
+		@include media(sp) {
+			margin-top: 5px;
+		}
+	}
+	&__desc {
+		@include font-size(15);
+	}
+	&__tblContainer {
+		width: 100%;
+		overflow: auto;
+		white-space: nowrap;
+	}
+	&__tbl {
+		@include fee-table();
+	}
+	&__tbl1 {
+		@include fee-table($color-fee-pink);
+		.fee-table__categ { background-color: lighten($color-fee-pink, 35%); }
+	}
+	&__tbl2 {
+		@include fee-table(#333);
+		.fee-table__categ { background-color: #EDEDED; }
+	}
+	&__tbl3 {
+		@include fee-table($color-fee-orange);
+		tr th, tr td {
+			@include font-size(16);
+			vertical-align: middle;
+		}
+		.fee-table__categ { background-color: white; }
+	}
+	&__append {
+		@include font-size(14);
+		li {
+			padding-left: 1em;
+			text-indent: -1em;
+			&:before {
+				content: "※";
+			}
+		}
+	}
+	&__kyushupop { // for pop
+		position: relative;
+		&:before {
+			position: absolute;
+			top: -67px;
+			left: -36px;
+			content: "お得です！！";
+			color: white;
+			@include font-size(18);
+			font-weight: bold;
+			background-color: $color-type01;
+			border-radius: 50%;
+			padding: 15px;
+			transform: rotate(-10deg);
+			@include media(sp) {
+				top: -60px;
+				left: -9px;
+				transform: rotate(-4deg);
+			}
+		}
+	}
+}
+
+// deco ------------------------------
+.deco {
+	background-color: white;
+	@include space-btm;
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__unit {
+		@include space-top;
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		&__left {
+			@include media(sp) {
+				margin-bottom: 20px;
+			}
+		}
+		&__right {
+			text-align: center;
+		}
+	}
+	&__red {
+		color: red;
+	}
+}
+
+// apply ------------------------------
+.apply {
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__deadline {
+		margin-top: 15px;
+		color: red;
+	}
+}

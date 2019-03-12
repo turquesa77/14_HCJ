@@ -1,0 +1,169 @@
+/* Scss Document */
+
+// visit ------------------------------
+.visit {
+	$color-orange: #F14616;
+	
+	&__desc {
+		text-align: center;
+		@include font-size(18);
+		font-weight: bold;
+		&__strong {
+			color: $color-orange;
+			@include font-size(22);
+		}
+	}
+	&__way {
+		width: 700px;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+		margin: 0 auto;
+		@include media(sp) {
+			width: 100%;
+			flex-flow: column;
+		}
+		li {
+			width: 45%;
+			text-align: center;
+			position: relative;
+			@include media(sp) {
+				width: 100%;
+				max-width: 350px;
+				margin: 0 auto;
+			}
+			&:nth-child(1):before {
+				position: absolute;
+				top: -8px;
+				left: -40px;
+				content: '特典あり！おすすめ';
+				color: white;
+				background-color: red;
+				transform: rotate(-15deg);
+				padding: 10px;
+				z-index: 10;
+			}
+			&:after {
+				position: absolute;
+				left: 50%;
+				bottom: 16px;
+				@include trigone-down(#ffef00);
+			}
+			a {
+				display: block;
+				height: 100%;
+				padding: 20px;
+				background-color: $color-main;
+				border-radius: 20px;
+				color: white;
+				@include hoverOpc;
+			}
+			+ li {
+				@include media(sp) {
+					margin-top: 40px;
+				}
+			}
+		}
+		&__icon {
+			img {
+				width: 150px;
+				height: 150px;
+			}
+		}
+		&__desc {
+			font-weight: bold;
+			line-height: 1.8;
+			span {
+				@include font-size(22);
+			}
+		}
+	}
+	&__step {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+		align-items: center;
+		border-bottom: 1px dotted #666;
+		@include space-btm;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		&__title {
+			display: block;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 5px solid $color-main;
+			background: white;
+			@include font-size(22);
+			font-weight: bold;
+			line-height: 1.7;
+			text-align: center;
+			color: $color-main;
+			box-sizing: border-box;
+			padding-top: 55px;
+			@include media(sp) {
+				margin-bottom: 35px;
+			}
+		}
+		&__unit {
+			max-width: 550px;
+		}
+		&__define {
+			dt {
+				background-color: $color-orange;
+				color: white;
+				text-align: center;
+				padding: 5px;
+				clear: left;
+				float: left;
+				width: 4em;
+			}
+			dd {
+				padding-left: 5em;
+				margin-bottom: 15px;
+			}
+		}
+		&__mark {
+			display: inline-block;
+			background-color: yellow;
+		}
+		&__btn {
+			width: 90%;
+			@include media(sp) {
+				margin: 0 auto;
+			}
+			a {
+				display: block;
+				width: 100%;
+				@include font-size(22);
+				color: white;
+				text-align: center;
+				letter-spacing: 3px;
+				border-radius: 10px;
+				background: $color-orange;
+				padding: 20px;
+				@include hoverOpc;
+			}
+		}
+	}
+	&__linkId {
+		display: block;
+		height: 50px;
+	}
+	&__subTitle {
+		text-align: center;
+		@include font-size(20);
+		font-weight: bold;
+		color: $color-main;
+	}
+	&__attention {
+		line-height: 2;
+		background-color: lighten($color-main, 34%);
+		padding: 20px 30px;
+		&__list {
+			list-style: disc;
+			margin-left: 16px;
+		}
+	}
+}
